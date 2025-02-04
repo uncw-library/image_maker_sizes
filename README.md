@@ -41,7 +41,11 @@ Save the script as image_maker_sizes.py.
 Run the script using the following command:
 
 ```sh
-python image_maker_sizes.py
+python image_maker_sizes.py {width} {height}
+
+(or)
+
+python image_maker_sizes.py -h       **for help message**
 ```
 
 ## Output

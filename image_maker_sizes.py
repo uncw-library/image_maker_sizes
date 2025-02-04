@@ -1,27 +1,28 @@
-from PIL import Image, ImageDraw, ImageFont
+import argparse
 import os
 
-# List of dimensions for the images
-dimensions = [(100, 100), (200, 150), (300, 200), (400, 300), (500, 400)]
+from PIL import Image, ImageDraw, ImageFont
 
-# Loop through each dimension and create an image
-for width, height in dimensions:
-    # Create a new image with black background
-    image = Image.new("RGB", (width, height), color="black")
 
-    # Initialize the drawing context
-    draw = ImageDraw.Draw(image)
-
-    # Define the text to be written on the image
+def main(width, height):
     text = f"{width} x {height}"
 
-    # Load a font
-    font = ImageFont.load_default()
+    # Create a new image with black background
+    image = Image.new("RGB", (width, height), color="black")
+    draw = ImageDraw.Draw(image)
+    font_size = min(width, height)
+    font_path = os.path.join("fonts", "ttf", "Hack-Bold.ttf")
+    font = ImageFont.truetype(font_path, font_size)
 
     # Calculate the bounding box of the text to be drawn
-    text_bbox = draw.textbbox((0, 0), text, font=font)
-    text_width = text_bbox[2] - text_bbox[0]
-    text_height = text_bbox[3] - text_bbox[1]
+    while True:
+        text_bbox = draw.textbbox((0, 0), text, font=font)
+        text_width = text_bbox[2] - text_bbox[0]
+        text_height = text_bbox[3] - text_bbox[1]
+        if text_width <= width and text_height <= height:
+            break
+        font_size -= 1
+        font = ImageFont.truetype(font_path, font_size)
 
     # Calculate X, Y position of the text
     x = (width - text_width) / 2
@@ -34,4 +35,18 @@ for width, height in dimensions:
     os.makedirs("output", exist_ok=True)
     image.save(os.path.join("output", f"image_{width}x{height}.jpg"))
 
-print("Images have been generated.")
+    print("Images have been generated.")
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='Generate images of various dimensions.')
+    parser.add_argument('width', type=int, help='Width of the image')
+    parser.add_argument('height', type=int, help='Height of the image')
+    args = parser.parse_args()
+
+    width = args.width
+    height = args.height
+    return width, height
+
+if __name__ == "__main__":
+    width, height = parse_args()
+    main(width, height)
