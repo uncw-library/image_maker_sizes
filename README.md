@@ -49,23 +49,5 @@ python image_maker_sizes.py -h       **for help message**
 ```
 
 ## Output
-The script will generate images with the following dimensions:
-
-- 100 x 100
-- 200 x 150
-- 300 x 200
-- 400 x 300
-- 500 x 400
-
-The generated images will be saved in the output directory with filenames in the format 
+The generated images will be saved in the "output" directory with filenames in the format 
 "image_{WIDTH}x{HEIGHT}.jpg".
-
-## Example
-After running the script, you will find the generated images in the "output" directory:
-
-    output/
-    ├── image_100x100.jpg
-    ├── image_200x150.jpg
-    ├── image_300x200.jpg
-    ├── image_400x300.jpg
-    └── image_500x400.jpg
