@@ -30,10 +30,10 @@ Useful when testing how an image appears on a display.
     .\venv\Scripts\activate
     ```
 
-4. Install the Pillow library using pip:
+4. Install the dependencies using pip:
 
     ```sh
-    pip install pillow
+    pip install -r requirements.txt
     ```
 
 ## Usage
