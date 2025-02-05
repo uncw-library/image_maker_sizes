@@ -7,8 +7,8 @@ from PIL import Image, ImageDraw, ImageFont
 def main(width, height):
     text = f"{width} x {height}"
 
-    # Create a new image with black background
-    image = Image.new("RGB", (width, height), color="black")
+    # Create a new image with blue background
+    image = Image.new("RGB", (width, height), color="blue")
     draw = ImageDraw.Draw(image)
     font_size = min(width, height)
     font_path = os.path.join("fonts", "ttf", "Hack-Bold.ttf")
