@@ -1,6 +1,6 @@
 # Image Maker Sizes
 
-This Python script generates images of various dimensions with the dimensions written in the center of each image. The generated images are saved in the `output` directory.
+This Python script generates images of various dimensions with the dimensions written in the center of each image. The generated images are saved in the "output" directory.
 
 Useful when testing how an image appears on a display.
 
@@ -15,7 +15,7 @@ Useful when testing how an image appears on a display.
 2. Create a virtual environment:
 
     ```sh
-    python -m venv image_maker_sizes
+    python -m venv venv
     ```
 
 3. Activate the virtual environment:
@@ -28,6 +28,11 @@ Useful when testing how an image appears on a display.
 - On Windows:
     ```sh
     .\venv\Scripts\activate
+
+    (or Git Bash)
+     
+    ./venv/Scripts/activate
+
     ```
 
 4. Install the dependencies using pip:
